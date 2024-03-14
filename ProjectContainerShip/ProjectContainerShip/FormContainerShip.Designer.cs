@@ -35,6 +35,7 @@
             buttonUp = new Button();
             buttonRight = new Button();
             buttonDown = new Button();
+            buttonCreateShip = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxContainerShip).BeginInit();
             SuspendLayout();
             // 
@@ -50,13 +51,14 @@
             // buttonCreate
             // 
             buttonCreate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buttonCreate.Location = new Point(0, 395);
+            buttonCreate.Location = new Point(0, 370);
             buttonCreate.Name = "buttonCreate";
-            buttonCreate.Size = new Size(75, 23);
+            buttonCreate.RightToLeft = RightToLeft.Yes;
+            buttonCreate.Size = new Size(98, 48);
             buttonCreate.TabIndex = 1;
-            buttonCreate.Text = "Создать";
+            buttonCreate.Text = "Создать контейнеровоз";
             buttonCreate.UseVisualStyleBackColor = true;
-            buttonCreate.Click += ButtonCreate_Click;
+            buttonCreate.Click += ButtonCreateContainerShip_Click;
             // 
             // buttonLeft
             // 
@@ -106,11 +108,24 @@
             buttonDown.UseVisualStyleBackColor = true;
             buttonDown.Click += ButtonMove_Click;
             // 
+            // buttonCreateShip
+            // 
+            buttonCreateShip.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            buttonCreateShip.Location = new Point(104, 370);
+            buttonCreateShip.Name = "buttonCreateShip";
+            buttonCreateShip.RightToLeft = RightToLeft.Yes;
+            buttonCreateShip.Size = new Size(98, 48);
+            buttonCreateShip.TabIndex = 6;
+            buttonCreateShip.Text = "Создать корабль";
+            buttonCreateShip.UseVisualStyleBackColor = true;
+            buttonCreateShip.Click += ButtonCreateShip_Click;
+            // 
             // FormContainerShip
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(689, 418);
+            Controls.Add(buttonCreateShip);
             Controls.Add(buttonDown);
             Controls.Add(buttonRight);
             Controls.Add(buttonUp);
@@ -131,5 +146,6 @@
         private Button buttonUp;
         private Button buttonRight;
         private Button buttonDown;
+        private Button buttonCreateShip;
     }
 }

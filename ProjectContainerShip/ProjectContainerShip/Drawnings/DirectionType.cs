@@ -1,4 +1,4 @@
-﻿namespace ProjectContainerShip;
+﻿namespace ProjectContainerShip.Drawnings;
 /// <summary>
 /// Направление перемещения
 /// </summary>
