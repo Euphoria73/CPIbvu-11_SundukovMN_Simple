@@ -3,7 +3,7 @@
 namespace ProjectContainerShip.Drawnings;
 
 /// <summary>
-/// Отрисовка сущности контейнеровоза
+/// Класс-наследник от базового класса DrawningShip отвечающий за проприсовку и перемещение контейнеровоза
 /// </summary>
 public class DrawningContainerShip : DrawningShip
 {

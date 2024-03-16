@@ -1,4 +1,5 @@
 ﻿using ProjectContainerShip.Drawnings;
+using ProjectContainerShip.MovementStrategy;
 
 namespace ProjectContainerShip;
 
@@ -8,15 +9,25 @@ public partial class FormContainerShip : Form
     /// Вызов класса прорисовки сущности "Контейнеровоз"
     /// </summary>
     private DrawningShip? _drawningShip;
+
+    /// <summary>
+    /// Стратегия перемещения
+    /// </summary>
+    private AbstractStrategy? _strategy;
+
+    /// <summary>
+    /// Инициализация формы
+    /// </summary>
     public FormContainerShip()
     {
         InitializeComponent();
+        _strategy = null;
     }
 
     /// <summary>
-    /// 
+    /// Создание обьекта
     /// </summary>
-    /// <param name="type"></param>
+    /// <param name="type">DrawningShip или DrawningContainerShip</param>
     private void CreateObject(string type)
     {
         Random rnd = new();
@@ -38,6 +49,9 @@ public partial class FormContainerShip : Form
 
         _drawningShip.SetPictureSize(pictureBoxContainerShip.Width, pictureBoxContainerShip.Height);
         _drawningShip.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100));
+        _strategy = null;
+        comboBoxStrategy.Enabled = true;
+
         Draw();
     }
     /// <summary>
@@ -89,7 +103,7 @@ public partial class FormContainerShip : Form
         }
     }
     /// <summary>
-    /// Отображение сущности на экране
+    /// Прорисовка обьекта на экране
     /// </summary>
     private void Draw()
     {
@@ -104,5 +118,45 @@ public partial class FormContainerShip : Form
         pictureBoxContainerShip.Image = bmp;
     }
 
-    
+    /// <summary>
+    /// Шаг обьекта
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ButtonStrategyStep_Click(object sender, EventArgs e)
+    {
+        if (_drawningShip == null)
+        {
+            return;
+        }
+
+        if (comboBoxStrategy.Enabled)
+        {
+            _strategy = comboBoxStrategy.SelectedItem switch
+            {
+                "К центру" => new MoveToCenter(),
+                "К краю" => new MoveToBorder(),
+                _ => null
+            };
+            if (_strategy == null)
+            {
+                return;
+            }
+            _strategy.SetData(new MoveableShip(_drawningShip), pictureBoxContainerShip.Width, pictureBoxContainerShip.Height);
+        }
+
+        if (_strategy == null)
+        {
+            return;
+        }
+        comboBoxStrategy.Enabled = false;
+        _strategy.MakeStep();
+        Draw();
+
+        if (_strategy.GetStatus() == StrategyStatus.Finish)
+        {
+            comboBoxStrategy.Enabled = true;
+            _strategy = null;
+        }
+    }   
 }

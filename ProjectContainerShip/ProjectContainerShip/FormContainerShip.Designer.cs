@@ -36,6 +36,8 @@
             buttonRight = new Button();
             buttonDown = new Button();
             buttonCreateShip = new Button();
+            comboBoxStrategy = new ComboBox();
+            buttonStrategyStep = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxContainerShip).BeginInit();
             SuspendLayout();
             // 
@@ -51,10 +53,11 @@
             // buttonCreate
             // 
             buttonCreate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buttonCreate.Location = new Point(0, 370);
+            buttonCreate.Font = new Font("Segoe UI", 8F);
+            buttonCreate.Location = new Point(0, 398);
             buttonCreate.Name = "buttonCreate";
             buttonCreate.RightToLeft = RightToLeft.Yes;
-            buttonCreate.Size = new Size(98, 48);
+            buttonCreate.Size = new Size(150, 20);
             buttonCreate.TabIndex = 1;
             buttonCreate.Text = "Создать контейнеровоз";
             buttonCreate.UseVisualStyleBackColor = true;
@@ -111,20 +114,43 @@
             // buttonCreateShip
             // 
             buttonCreateShip.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buttonCreateShip.Location = new Point(104, 370);
+            buttonCreateShip.Font = new Font("Segoe UI", 8F);
+            buttonCreateShip.Location = new Point(156, 398);
             buttonCreateShip.Name = "buttonCreateShip";
             buttonCreateShip.RightToLeft = RightToLeft.Yes;
-            buttonCreateShip.Size = new Size(98, 48);
+            buttonCreateShip.Size = new Size(182, 20);
             buttonCreateShip.TabIndex = 6;
             buttonCreateShip.Text = "Создать корабль";
             buttonCreateShip.UseVisualStyleBackColor = true;
             buttonCreateShip.Click += ButtonCreateShip_Click;
+            // 
+            // comboBoxStrategy
+            // 
+            comboBoxStrategy.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxStrategy.FormattingEnabled = true;
+            comboBoxStrategy.Items.AddRange(new object[] { "К центру", "К краю" });
+            comboBoxStrategy.Location = new Point(556, 12);
+            comboBoxStrategy.Name = "comboBoxStrategy";
+            comboBoxStrategy.Size = new Size(121, 23);
+            comboBoxStrategy.TabIndex = 7;
+            // 
+            // buttonStrategyStep
+            // 
+            buttonStrategyStep.Location = new Point(602, 41);
+            buttonStrategyStep.Name = "buttonStrategyStep";
+            buttonStrategyStep.Size = new Size(75, 23);
+            buttonStrategyStep.TabIndex = 8;
+            buttonStrategyStep.Text = "ШАГ";
+            buttonStrategyStep.UseVisualStyleBackColor = true;
+            buttonStrategyStep.Click += ButtonStrategyStep_Click;
             // 
             // FormContainerShip
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(689, 418);
+            Controls.Add(buttonStrategyStep);
+            Controls.Add(comboBoxStrategy);
             Controls.Add(buttonCreateShip);
             Controls.Add(buttonDown);
             Controls.Add(buttonRight);
@@ -147,5 +173,7 @@
         private Button buttonRight;
         private Button buttonDown;
         private Button buttonCreateShip;
+        private ComboBox comboBoxStrategy;
+        private Button buttonStrategyStep;
     }
 }

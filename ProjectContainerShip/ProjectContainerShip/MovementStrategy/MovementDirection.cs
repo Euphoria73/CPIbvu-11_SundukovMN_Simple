@@ -1,14 +1,10 @@
-﻿namespace ProjectContainerShip.Drawnings;
-/// <summary>
-/// Направление перемещения
-/// </summary>
-public enum DirectionType
-{
-    /// <summary>
-    /// Неизвестное направление
-    /// </summary>
-    Unknown = -1,
+﻿namespace ProjectContainerShip.MovementStrategy;
 
+/// <summary>
+/// Перечисление направлений
+/// </summary>
+public enum MovementDirection
+{
     /// <summary>
     /// Вверх
     /// </summary>

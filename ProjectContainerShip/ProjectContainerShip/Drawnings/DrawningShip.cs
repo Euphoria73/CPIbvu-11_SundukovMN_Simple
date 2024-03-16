@@ -1,12 +1,10 @@
 ﻿using ProjectContainerShip.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectContainerShip.Drawnings;
 
+/// <summary>
+/// Класс отвечающий за проприсовку и перемещение базового обьекта корабль
+/// </summary>
 public class DrawningShip
 {
 
@@ -26,12 +24,12 @@ public class DrawningShip
     public int? _pictureHeight;
 
     /// <summary>
-    /// Левая координата прорисовки контейнеровоза
+    /// Левая координата прорисовки обьекта
     /// </summary>
     protected int? _startPosX;
 
     /// <summary>
-    /// Верхняя координата прорисовки контейнеровоза
+    /// Верхняя координата прорисовки обьекта
     /// </summary>
     protected int? _startPosY;
 
@@ -43,7 +41,30 @@ public class DrawningShip
     /// <summary>
     /// Высота прорисовки контейнеровоза
     /// </summary>
-    private readonly int _drawingShipHeight = 130;
+    private readonly int _drawingShipHeight = 85;
+
+    /// <summary>
+    /// Координата Х обьекта
+    /// </summary>
+    public int? GetPosX => _startPosX;
+
+    /// <summary>
+    /// Координата У обьекта
+    /// </summary>
+    public int? GetPosY => _startPosY;
+
+    /// <summary>
+    /// Ширина обьекта
+    /// </summary>
+    /// <returns></returns>
+    public int GetWidth => _drawingShipWidth;
+
+    /// <summary>
+    /// Высота обьекта
+    /// </summary>
+    /// <returns></returns>
+    public int GetHeight => _drawingShipHeight;
+
 
     /// <summary>
     /// Пустой конструктор 
